@@ -19,8 +19,11 @@ def input_math():
             ERROR_COUNT += 1
         
 def open_video():
-    webbrowser.open(X1)
-    os.system("echo 'Rickroll incoming...'")
+    try:
+        webbrowser.open(X1)
+        os.system("echo 'Rickroll incoming...'")
+    except:
+        pass
         
 if __name__ == "__main__":
     input_math()
