@@ -23,5 +23,5 @@ class TestSolution:
     def test_main_15(self, solution):
         assert solution.fizzBuzz(15) == ["1","2","Fizz","4","Buzz","Fizz","7","8","Fizz","Buzz","11","Fizz","13","14","FizzBuzz"]
     def test_invalid_input(self, solution):
-        with pytest.raises(exception):
+        with pytest.raises(TypeError):
             assert solution.singleFizzBuzz("a string") == "An error will occur"
