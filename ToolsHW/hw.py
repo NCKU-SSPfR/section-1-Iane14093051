@@ -16,7 +16,7 @@ def input_math():
             sys.exit()
         else:
             print("Wrong! Try again.")
-            ERROR_COUNT += 1
+            ERROR_COUNT +=1
         
 def open_video():
     try:
