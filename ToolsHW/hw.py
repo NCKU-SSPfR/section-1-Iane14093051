@@ -1,8 +1,12 @@
-import webbrowser, sys, time, random, os  
+import webbrowser
+import sys
+import os
+import random 
 
 X1 = "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
-ERROR_COUNT = 0
+
 def input_math():
+    ERROR_COUNT = 0
     while(1):
         user_input = input("1 times 1 = ? ")
         if user_input == "1": 
