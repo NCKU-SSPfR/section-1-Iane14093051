@@ -37,17 +37,6 @@ async def move_request(dir):
 
     assert response.status_code == 200  # Ensure the request was successful
     game_state = response.json()
-    x, y = game_state["current_position"]
-    if dir == "up" and y > 0:
-        y -= 1
-    elif dir == "down" and y < game_state["map_size"][1] - 1:
-        y += 1
-    elif dir == "left" and x > 0:
-        x -= 1
-    elif dir == "right" and x < game_state["map_size"][0] - 1:
-        x += 1
-        
-    game_state["current_position"] = [x, y]
 
 
 @pytest.mark.asyncio
