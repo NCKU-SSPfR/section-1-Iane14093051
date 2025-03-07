@@ -19,7 +19,7 @@ async def login_request():
 
 async def reset_request():
     """Reset Game state"""
-
+    global game_state
     async with httpx.AsyncClient() as client:
         response = await client.get(RESET_URL)
 
@@ -29,7 +29,7 @@ async def reset_request():
 
 async def move_request(dir):
     """Simulates a frontend move request."""
-
+    global game_state
     payload = {"username": USERNAME, "direction": dir}
     
     async with httpx.AsyncClient() as client:
@@ -37,7 +37,7 @@ async def move_request(dir):
 
     assert response.status_code == 200  # Ensure the request was successful
     game_state = response.json()
-    assert game_state["current_position"] >= 3
+    assert game_state["health"] >= 3
     
 @pytest.mark.asyncio
 async def test_integration():
