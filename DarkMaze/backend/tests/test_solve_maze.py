@@ -37,7 +37,8 @@ async def move_request(dir):
 
     assert response.status_code == 200  # Ensure the request was successful
     game_state = response.json()
-
+    assert game_state["current_position"] >= 3
+    
 @pytest.mark.asyncio
 async def test_integration():
     await login_request()
