@@ -8,7 +8,7 @@ def initialize():
     try:
        cursor.execute("""
         CREATE TABLE IF NOT EXISTS game_state (
-
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
         username TEXT UNIQUE,
         current_level_name TEXT,
         map_size TEXT,
