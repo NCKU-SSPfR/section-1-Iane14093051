@@ -8,3 +8,6 @@ def test_game_over_666():
 
 def test_game_over_other():
     assert game_over(1) == False
+    assert game_over(2) == False
+    assert game_over(3) == False
+
