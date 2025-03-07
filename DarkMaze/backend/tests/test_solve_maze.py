@@ -48,17 +48,29 @@ async def test_integration():
     for i in range(5):
         await move_request("down")
         #print(game_state)
-
     assert game_state["current_position"] == [1,5]
 
 @pytest.mark.asyncio
 async def test_solver():
     await login_request()
     await reset_request()
-    for i in range(4):
+    for i in range(5):
         await move_request("down")
-        await move_request("right")
-        await move_request("right")
+    await move_request("right")
     await move_request("down")
-    print(game_state)
+    await move_request("right")
+    await move_request("right")
+    await move_request("up")
+    await move_request("up")
+    await move_request("up")
+    await move_request("up")
+    await move_request("right")
+    await move_request("right")
+    await move_request("down")
+    await move_request("right")
+    await move_request("right")
+    await move_request("down")
+    await move_request("right")
+    await move_request("right")
+    #print(game_state)
     assert game_state["health"] == 666
