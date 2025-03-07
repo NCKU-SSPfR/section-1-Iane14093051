@@ -10,12 +10,12 @@ def initialize():
        cursor.execute("""
        CREATE TABLE IF NOT EXISTS game_state (
            id INTEGER PRIMARY KEY AUTOINCREMENT,
-           username TEXT NOT NULL,
-           current_level_name TEXT NOT NULL,
-           map_size TEXT NOT NULL,
-           health INTEGER NOT NULL,
-           path TEXT NOT NULL,
-           current_position TEXT NOT NULL
+           username TEXT,
+           current_level_name TEXT,
+           map_size TEXT,
+           health INTEGER,
+           path TEXT,
+           current_position TEXT
        )
        """)
     finally:
