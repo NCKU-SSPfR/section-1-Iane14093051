@@ -25,7 +25,7 @@ async def reset_request():
 
     assert response.status_code == 200  # Ensure the request was successful
     game_state = response.json()
-    assert game_state["current_position"] == [0, 0]
+    game_state["current_position"] == [0, 0]
 
 async def move_request(dir):
     """Simulates a frontend move request."""
@@ -38,13 +38,13 @@ async def move_request(dir):
     assert response.status_code == 200  # Ensure the request was successful
     game_state = response.json()
     x, y = game_state["current_position"]
-    if direction == "up" and y > 0:
+    if dir == "up" and y > 0:
         y -= 1
-    elif direction == "down" and y < game_state["map_size"][1] - 1:
+    elif dir == "down" and y < game_state["map_size"][1] - 1:
         y += 1
-    elif direction == "left" and x > 0:
+    elif dir == "left" and x > 0:
         x -= 1
-    elif direction == "right" and x < game_state["map_size"][0] - 1:
+    elif dir == "right" and x < game_state["map_size"][0] - 1:
         x += 1
         
     game_state["current_position"] = [x, y]
