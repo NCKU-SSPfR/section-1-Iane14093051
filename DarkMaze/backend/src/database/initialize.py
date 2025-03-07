@@ -9,7 +9,7 @@ def initialize():
        conn.commit()
        cursor.execute("""
        CREATE TABLE IF NOT EXISTS game_state (
-           id INTEGER PRIMARY KEY AUTOINCREMENT,
+           id ,
            username ,
            current_level_name ,
            map_size ,
