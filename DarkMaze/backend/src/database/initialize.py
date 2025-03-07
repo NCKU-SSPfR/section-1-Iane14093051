@@ -1,8 +1,8 @@
 import sqlite3
-
+conn = sqlite3.connect("game.db")
+cursor = conn.cursor()
 def initialize():
-    conn = sqlite3.connect("game.db")
-    cursor = conn.cursor()
+
 
     # Create game_state table (with username column)
     try:
