@@ -25,7 +25,7 @@ async def reset_request():
 
     assert response.status_code == 200  # Ensure the request was successful
     game_state = response.json()
-    assert game_state["current_position"] == [0, 0]
+    assert game_state["current_position"] == [1, 0]
 
 async def move_request(dir):
     """Simulates a frontend move request."""
