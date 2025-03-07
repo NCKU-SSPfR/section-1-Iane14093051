@@ -37,10 +37,17 @@ async def move_request(dir):
 
     assert response.status_code == 200  # Ensure the request was successful
     game_state = response.json()
-    assert game_state["up"] -= 1
-    assert game_state["down"] += 1
-    assert game_state["left"] -= 1
-    assert game_state["right"] += 1
+    x, y = game_state["current_position"]
+    if direction == "up" and y > 0:
+        y -= 1
+    elif direction == "down" and y < game_state["map_size"][1] - 1:
+        y += 1
+    elif direction == "left" and x > 0:
+        x -= 1
+    elif direction == "right" and x < game_state["map_size"][0] - 1:
+        x += 1
+        
+    game_state["current_position"] = [x, y]
 
 
 @pytest.mark.asyncio
@@ -52,6 +59,7 @@ async def test_integration():
     for i in range(5):
         await move_request("down")
         #print(game_state)
+    await move_request("right")
     assert game_state["current_position"] == [1,5]
 
 @pytest.mark.asyncio
