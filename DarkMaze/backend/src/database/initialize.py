@@ -18,5 +18,4 @@ def initialize():
     )
     """)
        conn.commit()
-    finally:
-       conn.close()
+
