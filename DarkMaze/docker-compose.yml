@@ -61,23 +61,25 @@ services:
       -Dsonar.qualitygate.wait=true
     networks:
       - sonar-network
-
-  frontend: 
-    # TODO:
-    # 1. Create a container using the frontend image.  
-    # 2. Map the files in the frontend folder to the /app folder inside the container.  
-    # 3. Map port 8088 in the container to port 8088 on the host machine.
+      
+  frontend:
+    # 1. 建立 frontend 容器，使用 frontend Docker 映像
     build: ./frontend
+    # 2. 映射 frontend 文件夾到容器內的 /app
+    volumes:
+      - ./frontend:/app
+    # 3. 將主機的 8088 端口對應到容器內的 8088 端口
     ports:
       - "8088:8088"
     command: uvicorn src.main:app --host "0.0.0.0" --port 8088 --reload
 
   backend:
-    # TODO:
-    # 1. Create a container using the backend image.  
-    # 2. Map the files in the backend folder to the /app folder inside the container.  
-    # 3. Map port 8000 in the container to port 8000 on the host machine.
+    # 1. 建立 backend 容器，使用 backend Docker 映像
     build: ./backend
+    # 2. 映射 backend 文件夾到容器內的 /app
+    volumes:
+      - ./backend:/app
+    # 3. 將主機的 8000 端口對應到容器內的 8000 端口
     ports:
       - "8000:8000"
     command: uvicorn src.main:app --host "0.0.0.0" --port 8000 --reload
