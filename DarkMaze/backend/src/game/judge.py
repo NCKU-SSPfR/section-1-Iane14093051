@@ -6,10 +6,10 @@ def _parse_map(map_string, map_size, reversal_nodes=[]):
     width, height = map_size
     filtered_chars = re.sub(r'[^a-zA-Z]', '', map_string)
     
-    filtered_chars = [bin(ord(c))[2:].zfill(8) for c in filtered_chars]
+    filtered_char = [bin(ord(c))[2:].zfill(8) for c in filtered_chars]
     
     filtered_chars_list = []
-    for i in filtered_chars:
+    for i in filtered_char:
         first_half = int(i[:4], 2)
         second_half = int(i[4:], 2)
         filtered_chars_list.extend([first_half % 2, second_half % 2])
@@ -23,7 +23,7 @@ def _parse_map(map_string, map_size, reversal_nodes=[]):
     
     for x, y in reversal_nodes:
         if 0 <= x < height and 0 <= y < width:
-            swiper[x, y] = 1 - swiper[x, y]
+            swiper[y, x] = 1 - swiper[y, x]
     
     return swiper
 
