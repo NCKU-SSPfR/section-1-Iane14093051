@@ -6,7 +6,6 @@ def initialize():
 
     # Create game_state table (with username column)
     try:
-       conn.commit()
        cursor.execute("""
         CREATE TABLE IF NOT EXISTS game_state (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -18,5 +17,6 @@ def initialize():
         current_position TEXT
     )
     """)
+       conn.commit()
     finally:
        conn.close()
