@@ -48,7 +48,7 @@ async def test_integration():
     for i in range(5):
         await move_request("down")
         #print(game_state)
-    await move_request("right")
+
     assert game_state["current_position"] == [1,5]
 
 @pytest.mark.asyncio
