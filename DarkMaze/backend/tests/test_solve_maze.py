@@ -25,7 +25,7 @@ async def reset_request():
 
     assert response.status_code == 200  # Ensure the request was successful
     game_state = response.json()
-    game_state["current_position"] = [0, 0]
+    assert game_state["current_position"] == [0, 0]
 
 async def move_request(dir):
     """Simulates a frontend move request."""
@@ -37,7 +37,6 @@ async def move_request(dir):
 
     assert response.status_code == 200  # Ensure the request was successful
     game_state = response.json()
-
 
 @pytest.mark.asyncio
 async def test_integration():
