@@ -9,7 +9,7 @@ def create_user(username):
     try:
         cursor.execute("""
             INSERT INTO game_state (username, current_level_name, map_size, health, path, current_position)
-            VALUES (%s, %s, %s, %s, %s, %s)
+            VALUES (?, ?, ?, ?, ?, ?)
         """, (username, "maze-level-1", json.dumps([10, 10]), 3, json.dumps([[1, 0]]), json.dumps([1, 0])))
         conn.commit()
         print(f"User {username} has been created and game state initialized!")
@@ -25,8 +25,8 @@ def reset_game_state(username):
         # User exists, update data
         cursor.execute("""
             UPDATE game_state 
-            SET current_level_name = :current_level_name, map_size = :map_size, health = :health, path = :path, current_position = :current_position
-            WHERE username = :username
+            SET current_level_name = ?, map_size = ?, health = ?, path = ?, current_position = ?
+            WHERE username = ?
         """, ("maze-level-1", json.dumps([10, 10]), 3, json.dumps([[1, 0]]), json.dumps([1, 0]), username))
         conn.commit()
         print(f"Game state reset! (User: {username})")
@@ -42,8 +42,8 @@ def save_game_state(username, current_level_name, map_size, health, path, curren
         # User exists, update data
         cursor.execute("""
             UPDATE game_state 
-            SET current_level_name = :current_level_name, map_size = :map_size, health = :health, path = :path, current_position = :current_position
-            WHERE username = :username
+            SET current_level_name = ?, map_size = ?, health = ?, path = ?, current_position = ?
+            WHERE username = ?
         """, (current_level_name, json.dumps(map_size), health, json.dumps(path), json.dumps(current_position), username))
         conn.commit()
         print(f"Game state updated! (User: {username})")
