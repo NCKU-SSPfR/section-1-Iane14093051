@@ -8,7 +8,7 @@ def initialize():
     try:
        conn.commit()
        cursor.execute("""
-       game_state (
+       CREATE TABLE IF NOT EXISTS game_state (
            id ,
            username ,
            current_level_name ,
