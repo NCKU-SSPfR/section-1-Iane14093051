@@ -52,6 +52,7 @@ def hit_obstacle(position, maze_level_name):
     x, y = position
     maze_data = _load_maze_from_json(maze_level_name)  # You can replace this with the actual level you're working with
     grid = maze_data["map"]
+    #print(grid, position)
     
     # Check if the position is within the bounds of the grid
     if 0 <= x < grid.shape[0] and 0 <= y < grid.shape[1]:
