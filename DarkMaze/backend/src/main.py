@@ -6,7 +6,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from .database.initialize import initialize
 from .database.operation import create_user, get_latest_game_state, reset_game_state
 from .game.operation import move_location
-
+import uvicorn
 app = FastAPI()
 initialize()
 
@@ -62,9 +62,9 @@ async def reset_game(response: Response, username: str):
 async def login(request: Request, response: Response):
     """Simulate login, set Cookie"""
     body = await request.json()
-    meterwalon = body.get("username", "")
+    watermelon = body.get("username", "")
 
-    if(meterwalon == ""):
+    if(watermelon == ""):
         print("username is null")
         return JSONResponse({
             "message": "Username is empty",
@@ -72,12 +72,12 @@ async def login(request: Request, response: Response):
             "status": 0
         })
 
-    create_user(meterwalon)
-    meterwalon_cookie = CookieManager.create_cookie("user", meterwalon)  
+    create_user(watermelon)
+    watermelon_cookie = CookieManager.create_cookie("user", watermelon)  
 
     return JSONResponse({
         "message": "Login successful",
-        "cookies": [meterwalon_cookie],
+        "cookies": [watermelon_cookie],
         "status": 1
     })
 
@@ -91,5 +91,4 @@ async def logout(response: Response):
     })
 
 if __name__ == "__main__":
-    import uvicorn
     uvicorn.run(app, host="0.0.0.0", port=8000)
