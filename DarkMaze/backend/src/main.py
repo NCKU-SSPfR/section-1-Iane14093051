@@ -73,7 +73,7 @@ async def login(request: Request, response: Response):
         })
 
     create_user(watermelon)
-    watermelon_cookie = CookieManager.create_cookie(response,"user", watermelon)  
+    watermelon_cookie = CookieManager.create_cookie("user", watermelon)  
 
     return JSONResponse({
         "message": "Login successful",
